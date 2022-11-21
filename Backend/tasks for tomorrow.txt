@@ -1,0 +1,30 @@
+Tasks:
+- Use config for each hardcode! - V 
+- Use custom erros - dont put todo comments! - V (but show almog)
+- Learn about utf8 - v 
+- undrstand very well streams and headers - and put on your mind how download works in a manner of http req/res.
+- Implement enum for type of the model - think at the Document and Group model!  - see how they did that at almog's git lab project - opend already at chrome - V
+- Move minio to server and add error handler - V
+
+__________________________________
+- Add logic for permissions - get data (as admin - get all or what is needed/ as Hapash - get his own id). -V
+- Add authentication with jwt - strategy  - V
+- add JOI - X 
+- notice( ! ) : user field added by me to express request - check if it doing it by it self when i add jwt strategy! - V
+- get help from almog about the todo - X/V
+
+            // think about relevat methods for the forntend - like get all users of specific group
+
+do at work:
+- check the right method for getting avatar with people api and add it to create user api.
+- understand people api get user type. get the right name and update your program (create user)
+- understand the thing with APIKey of the people api if i can get a constant one.
+- understand how to use souf-auth and implement it well.
+
+
+Frontend tasks:
+- look dashboard configuration - understand and imply in your project
+- make a mock adjusted to your backend (with user logged with whole properties)
+- add mock that return a lot of users like in your project (have json file mock inside your project) - copy to dbjson (mocks directory)
+- add routes for login - if authenticated navigate to the right route else navigate to other page
+- at login page make login fetch request, when the data is return navigate to another route which represent the data/private data. else route to unAuthorized (use useNavigate to move him)

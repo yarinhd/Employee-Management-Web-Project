@@ -1,0 +1,18 @@
+{
+    "profile": {
+        "_id":"629693818a0821af7afeadc4",
+        "id":"629693818a0821af7afeadc4",
+        "__v":0,
+        "username":"t_dim_v",
+        "fullName":"Dim Vil",
+        "rank":"Seren",
+        "job":"Engineer",
+        "gender":"male",
+        "serviceEndDate":"10/5/2004",
+        "inGroup":"cram",
+        "isAdmin":false,
+        "avatar":"https://people/api/v1/user/image/t_dim_v?defaultImage=false",
+        "createdAt":"2022-05-31T22:15:26.581Z",
+        "updatedAt":"2022-06-27T09:22:04.985Z"
+    }
+}

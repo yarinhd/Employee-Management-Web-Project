@@ -1,0 +1,45 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": ["react-app", "plugin:react/recommended", "airbnb-typescript-prettier"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        }
+    },
+    "plugins": ["react", "@typescript-eslint"],
+    "rules": {
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": ["error"],
+        "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
+        "import/extensions": "off",
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": ["error"],
+        "react/jsx-indent": ["error", 4],
+        "react/prop-types": "off",
+        "react/jsx-props-no-spreading": "off",
+        "no-underscore-dangle": "off",
+        "no-console": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "react-hooks/exhaustive-deps": "off",
+        "react/function-component-definition": [
+            0,
+            {
+                "namedComponents": "function-declaration"
+            }
+        ],
+        "@typescript-eslint/no-unused-vars": 1
+    }
+}

@@ -1,0 +1,24 @@
+[{
+    "name": "Hituah",
+    "users": ["usersId"],
+    "subGroups": ["groupsId"],
+    "parentId": "groupId"
+},
+{
+    "name": "t_almog_h",
+    "users": "Almog Hazan",
+    "subGroups": "Captain",
+    "parentId": "Software Engineer"
+},
+{
+    "name": "t_tom_f",
+    "users": "Tom Furman",
+    "subGroups": "Lieutenant ",
+    "parentId": "Mechanical Engineer"
+},
+{
+    "name": "t_hila_d",
+    "users": "Hila De Leon",
+    "subGroups": "Private",
+    "parentId": "Mechanical Design"
+}]
