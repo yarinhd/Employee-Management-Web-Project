@@ -1,13 +1,15 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const config_1 = require("../../config");
-const user_manager_1 = __importDefault(require("../../users/user.manager"));
-const userError_1 = require("../errors/userError");
-const people_api_1 = require("../people-api-mock/people-api");
-const utils_1 = require("./lib/utils");
+'use strict';
+var __importDefault =
+    (this && this.__importDefault) ||
+    function (mod) {
+        return mod && mod.__esModule ? mod : { default: mod };
+    };
+Object.defineProperty(exports, '__esModule', { value: true });
+const config_1 = require('../../config');
+const user_manager_1 = __importDefault(require('../../users/user.manager'));
+const userError_1 = require('../errors/userError');
+const people_api_1 = require('../people-api-mock/people-api');
+const utils_1 = require('./lib/utils');
 class authController {
     /**
      * @param {Request} req http request
@@ -17,7 +19,7 @@ class authController {
      * token signed here after user creation (register allegedly happned when user connected to the computer)
      */
     static async userLogin(req, res) {
-        // from soufAuth mock
+        // from Auth mock
         const userName = req.username;
         if (!userName) {
             throw new userError_1.UserIsNotConnectedError('User is not connected!');

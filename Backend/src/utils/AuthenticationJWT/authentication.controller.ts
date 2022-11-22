@@ -17,7 +17,7 @@ export default class authController {
      * token signed here after user creation (register allegedly happned when user connected to the computer)
      */
     static async userLogin(req: Request, res: Response) {
-        // from soufAuth mock
+        // from Auth mock
         const userName: string | undefined = req.username;
         if (!userName) {
             throw new UserIsNotConnectedError('User is not connected!');

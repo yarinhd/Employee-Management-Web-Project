@@ -1,11 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.soufAuth = void 0;
+import { NextFunction, Request, Response } from 'express';
+
 // TODO: Remember to delete added propery inside Reequest -> RequestParamsHandler -> propery name: username:string
 // TODO: need to do adaption to connect it to work place library - get sharp about it
 // TODO: ask almog if should i wrap it and why
-class soufAuth {
-    static kerberosAuth(req, res, next) {
+export class Auth {
+    static kerberosAuth(req: Request, res: Response, next: NextFunction) {
         req.username = 't_dim_v';
         // req.username = 't_yos_s';
         // req.username = 't_avishay_h';
@@ -19,4 +18,3 @@ class soufAuth {
         next();
     }
 }
-exports.soufAuth = soufAuth;
