@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.soufAuth = void 0;
+exports.Auth = void 0;
 // TODO: Remember to delete added propery inside Reequest -> RequestParamsHandler -> propery name: username:string
 // TODO: need to do adaption to connect it to work place library - get sharp about it
 // TODO: ask almog if should i wrap it and why
@@ -19,4 +19,4 @@ class soufAuth {
         next();
     }
 }
-exports.soufAuth = soufAuth;
+exports.Auth = soufAuth;

@@ -27,7 +27,7 @@ export class Server {
         passport.use(Strategy);
         this.app.use(passport.initialize());
         // TODO: adapt it to the work place libarary
-        // this.app.use(soufAuth.kerberosAuth);
+        // this.app.use(Auth.kerberosAuth);
         users.createUser();
         this.app.use(appRouter);
         this.app.use(userErrorHandler);

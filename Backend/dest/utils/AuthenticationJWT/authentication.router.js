@@ -10,5 +10,5 @@ const authentication_controller_1 = __importDefault(require("./authentication.co
 const soufAuthMW_mock_1 = require("./souf-Auth/soufAuthMW_mock");
 exports.authRouter = (0, express_1.Router)();
 // signing token for user based on former connection to the computer user
-// user name  is coupled to the request before signing the with soufAuth MW
+// user name  is coupled to the request before signing the with Auth MW
 exports.authRouter.get('/login', soufAuthMW_mock_1.soufAuth.kerberosAuth, wrapper_1.default.wrapAsync(authentication_controller_1.default.userLogin));
