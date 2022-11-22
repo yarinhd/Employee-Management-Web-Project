@@ -1,10 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
 exports.Auth = void 0;
 // TODO: Remember to delete added propery inside Reequest -> RequestParamsHandler -> propery name: username:string
 // TODO: need to do adaption to connect it to work place library - get sharp about it
 // TODO: ask almog if should i wrap it and why
-class soufAuth {
+class Auth {
     static kerberosAuth(req, res, next) {
         req.username = 't_dim_v';
         // req.username = 't_yos_s';
@@ -19,4 +19,4 @@ class soufAuth {
         next();
     }
 }
-exports.Auth = soufAuth;
+exports.Auth = Auth;
