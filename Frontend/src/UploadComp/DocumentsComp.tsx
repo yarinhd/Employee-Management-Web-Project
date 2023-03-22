@@ -1,29 +1,20 @@
 /* eslint-disable no-nested-ternary */
 import React, { useContext, useEffect } from 'react';
 import {
-    Box,
-    Button,
+
     Card,
     CardActions,
     CardContent,
     CardHeader,
-    Grid,
-    Icon,
-    IconButton,
+
     makeStyles,
 } from '@material-ui/core';
 
 import Typography from '@mui/material/Typography';
-
-import AutorenewIcon from '@mui/icons-material/Autorenew';
-import CloudSyncIcon from '@mui/icons-material/CloudSync';
-
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-
 import { InputLabel } from '@mui/material';
-import { toast } from 'react-toastify';
 import { getUserDocsBySub, uploadDocument, deleteDocument, downloadDocument, updateDocument } from '../services/user';
 import useWrapFetch from '../hooks/useWrapFetch';
 import { Context } from '../store/Store';
@@ -31,8 +22,6 @@ import { IDocument } from '../models/IDocument';
 import ActionModal from './ActionModal';
 import DocumentIcon from './DocumentIcon';
 import DocumentUpload from './DocumentUpload';
-import FlipCardList from '../components/PersonalInfo/FlipCardList';
-
 import IUser from '../models/IUser';
 import EmptyContentComp from '../components/EmptyContent/EmptyContent';
 import toastHandler from '../Utils/toastHandler';
@@ -58,7 +47,6 @@ const useStyle = makeStyles({
     },
     cardHeaderFilter: {
         margin: '0',
-        // background: '#fff',
         color: '#fff',
         height: '100%',
         width: '15%',
@@ -138,13 +126,10 @@ export const DocumentsComp: React.FC<FileUploadProps> = ({
     const fetchDeleteDocument = () => {
         setOpenDeletionModal(false);
         setUserDocuments((prevState) => prevState.filter((document) => document?._id !== (documentId as string)));
-        deleteUserDocumentWrapped(documentId)((document) => console.log('deleted:', document));
         setDocumentId(null);
         toastHandler('success', 'הקובץ נמחק בהצלחה!');
     };
-    // TODO: Stack here - how to update specific document with setDocuments!
-    // after that send all to anothe activeModal and check it
-    // check prevstate
+
     const fetchUpdateDocumentVisibility = () => {
         setOpenUpdateModal(false);
         const choosenDoc: IDocument | undefined = userDocuments.find(
@@ -156,7 +141,6 @@ export const DocumentsComp: React.FC<FileUploadProps> = ({
         }
 
         updateDocumentWrapped(documentId, { hidden: !choosenDoc.hidden })((updatedDocument) => {
-            console.log('updatedDocument:', updatedDocument);
             setUserDocuments((prevState) => {
                 const updatedDocs: IDocument[] = prevState.map((document) => {
                     if (document._id === (documentId as string)) return updatedDocument;
@@ -186,7 +170,6 @@ export const DocumentsComp: React.FC<FileUploadProps> = ({
             setUserDocuments(sortDocumentsByDate(documents));
         });
 
-        // TODO: ask almog if that is ok to put it as dependency
     }, [state.chosenUser]);
 
     const fetchUploadDocument = (
@@ -201,17 +184,14 @@ export const DocumentsComp: React.FC<FileUploadProps> = ({
             hiddenFile,
             fileToUpload as File
         )((document) => {
-            console.log('response', document);
             setUserDocuments((prevState) => [document].concat(prevState));
             toastHandler('success', 'העלאת הקובץ בוצעה בהצלחה!');
         });
     };
 
     const fetchDownloadDocument = (docuemntId: string) => {
-        console.log('hiiiiiii', docuemntId);
 
         downloadDocumentWrapped(docuemntId)((document) => {
-            console.log('response', document);
             toastHandler('success', 'ההורדה החלה בהצלחה!');
         });
     };
@@ -220,7 +200,6 @@ export const DocumentsComp: React.FC<FileUploadProps> = ({
 
     const handleChangeFilter = (event: SelectChangeEvent) => {
         setFilterValue(event.target.value);
-        console.log('value', event.target.value);
 
         switch (event.target.value) {
             case 'date':
@@ -236,7 +215,6 @@ export const DocumentsComp: React.FC<FileUploadProps> = ({
 
     const isMyPage = state.user?._id !== state.chosenUser?._id;
 
-    //* TODO: move whole hard code to config */
 
     return (
         <>
@@ -305,7 +283,6 @@ export const DocumentsComp: React.FC<FileUploadProps> = ({
                     }
                     classes={{ action: classes.cardHeaderFilter }}
                 />
-                {/* TODO: add block for uploading files to your own page */}
                 <CardContent style={{ paddingBottom: '0.05%', height: `${isMyPage ? '60%' : '80%'}` }}>
                     {userDocuments.length ? (
                         <DocumentIcon

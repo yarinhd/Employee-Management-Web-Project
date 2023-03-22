@@ -22,8 +22,6 @@ export class users {
 
     // get user by username (t_yarin_h)
     static async getUser(username: string, fields: string[]) {
-        console.log('username:', username);
-
         const user: IPeopleUser | null = await PeopleUserModel.findOne({ username }).select('-__v -_id').lean().exec();
 
         if (user === null) {
@@ -42,21 +40,3 @@ export class users {
         return branchUsers;
     }
 }
-
-// static async check(req: Request, res: Response) {
-
-//     const user = await PeopleApi.createUser();
-//     console.log(user);
-
-//     res.json(user);
-//     }
-
-//     static async checkk(req: Request, res: Response) {
-//         const username =req.params.username;
-//         console.log(username);
-
-//         const user = await PeopleApi.getUser(username);
-//         console.log(user);
-
-//         res.json(user);
-//         }

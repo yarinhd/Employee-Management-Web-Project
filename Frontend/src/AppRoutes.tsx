@@ -53,9 +53,7 @@ const AppRoutes: React.FC = () => {
     const [state] = useContext(Context);
     const classes = useStyles();
     const { isLoading } = state;
-    console.log('AppRoutes - isLoading', isLoading);
-    // TODO: deal with the component leave the connection of private route
-    // and every thing
+
 
     return (
         <ThemeProvider theme={theme}>
@@ -64,26 +62,18 @@ const AppRoutes: React.FC = () => {
                     <Route path="/*" element={<PrivateRoute component={Home} />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/peyalef" element={<PrivateRoute component={PeyAlef} />} />
-                    {/* <Route path="/*" element={<Home />} /> */}
-                    {/* <Route path="/aaa/aaa" element={<PrivateRoute component={Example2Page} />} /> */}
-                    {/* TODO: need to take data from json server and inject here
-                check if is working if not make it work
-            TODO: connect it to the private route when you want to start work on backend */}
+
                     <Route path="/hatah" element={<PrivateRoute component={Hatah} />} />
                     <Route path="/havad" element={<PrivateRoute component={Havad} />} />
                     <Route path="/notes" element={<PrivateRoute component={NotesTimeline} />} />
                     <Route path="/pakoodim" element={<PrivateRoute component={Pakoodim} />} />
                     <Route path="/error/*" element={<ErrorComp />} />
-                    {/* <Route path="/dis">
-                <Route index element={<p>Parent element</p>} />
-                <Route path="noder" element={<p>Child route</p>} />
-            </Route> */}
+
                 </Routes>
                 {isLoading && <Loading />}
             </MainLayout>
             <ToastContainer rtl className={classes.toastMsg} transition={Slide} />
 
-            {/* {alertMsg.show && <ToastMsg type={alertMsg.class} content={alertMsg.content} />} */}
         </ThemeProvider>
     );
 };

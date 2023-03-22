@@ -3,7 +3,6 @@ import { IUser } from './user.interface';
 
 const UserSchema = new mongoose.Schema(
     {
-        // TODO: Handle duplication of username - build custom error or something like that.
         username: {
             type: String,
             index: true,

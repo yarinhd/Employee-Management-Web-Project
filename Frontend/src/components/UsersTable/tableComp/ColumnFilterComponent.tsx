@@ -1,7 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 import React from 'react';
 
-// TODO: Add debounding for searching in this componnent
 
 const useStyles = makeStyles(() => ({
     boxFilter: {

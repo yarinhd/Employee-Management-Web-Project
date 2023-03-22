@@ -27,7 +27,6 @@ export default class DocumentManager {
      * @return {IDocument} found document file download (using minio - S3)
      */
     static async downloadDocumentById(documentId: string, res: Response) {
-        console.log('hohohohoohoho');
 
         const foundDocument = await DocumentRepository.getDocumentById(documentId);
         if (!foundDocument) {
@@ -58,7 +57,6 @@ export default class DocumentManager {
      */
 
     static async getAllUserDocsBySub(userId: string, subject: DocumentSubject, connectedUserId: string) {
-        console.log(`userId: ${userId}, subject:${subject}`);
 
         await UserManager.getUserByUserId(userId);
         if (!Object.values(DocumentSubject as object).includes(subject)) {
@@ -82,7 +80,6 @@ export default class DocumentManager {
      */
 
     static async getAllSelfDocsBySub(userId: string, subject: DocumentSubject) {
-        console.log(`userId: ${userId}, subject:${subject}`);
 
         await UserManager.getUserByUserId(userId);
         if (!Object.values(DocumentSubject as object).includes(subject)) {
@@ -108,7 +105,6 @@ export default class DocumentManager {
             throw new WrongInputSubjectError('Subject is not exist - choose option from the box');
         }
         await UserManager.getUserByUserId(userId);
-        console.log(`formfields: ${JSON.stringify(formfields.fields)}`);
 
         const DocumentData: IDocument = {
             userId,

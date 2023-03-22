@@ -25,36 +25,25 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Login: React.FC = () => {
-    console.log('LOGIN - startlogin');
 
     const navigate = useNavigate();
     const [state, dispatch] = useContext(Context);
-    console.log(`Login - ${state.error}`);
 
     const classes = useStyles();
     const setMyUserCookieWrapped = useWrapFetch(setMyUserCookie);
     useEffect(() => {
         setMyUserCookieWrapped()((userAuth) => {
-            console.log('hi effect');
             dispatch({ type: 'SET_CHOSEN_USER', payload: userAuth.user });
             dispatch({ type: 'SET_USER', payload: userAuth.user });
             // dispatch({ type: 'SET_TOAST_MSG', payload: { show: true, class: 'success', content: 'התחבר בהצלחה' } });
         });
     }, []);
 
-    // const setMyUserCookieWrapped = useWrapFetch(setMyUserCookie)();
-    // useEffect(() => {
-    //     setMyUserCookieWrapped((user) => {
-    //         console.log('hi effect');
-    //         dispatch({ type: 'SET_USER', payload: user });
-    //     });
-    // }, []);
+
 
     return (
         <>
             {state.user && <Navigate to="/notes" />}
-            {/* {state.error && alertMsg.show && <ToastMsg type={alertMsg.class} content={alertMsg.content} />} */}
-            {/* {state.error && <Navigate to="/error/" />} */}
         </>
     );
 };

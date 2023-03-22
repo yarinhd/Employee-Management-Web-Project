@@ -17,7 +17,6 @@ const authApi = config.endpoints.auth.api;
 const documentApi = config.endpoints.document.api;
 const noteApi = config.endpoints.note.api;
 
-console.log('api', userApi);
 // eslint-disable-next-line import/prefer-default-export
 export const getMyUser: () => Promise<IUser> = () => {
     return fetch(`${userApi}/me`, {
@@ -28,7 +27,6 @@ export const getMyUser: () => Promise<IUser> = () => {
 };
 
 export const getUser: (userId: string) => Promise<IUser> = (userId: string) => {
-    console.log(`${userApi}/${userId}`);
 
     return fetch(`${userApi}/${userId}`, {
         credentials: 'include',
@@ -39,7 +37,6 @@ export const getUser: (userId: string) => Promise<IUser> = (userId: string) => {
 };
 
 export const setMyUserCookie: () => Promise<IAuth> = () => {
-    console.log(authApi);
 
     return fetch(`${authApi}`, {
         credentials: 'include',
@@ -50,7 +47,6 @@ export const setMyUserCookie: () => Promise<IAuth> = () => {
 };
 
 export const getMyPakoodim: () => Promise<IUser[]> = () => {
-    console.log(`${userApi}/MyPakoodim`);
     return fetch(`${userApi}/MyPakoodim`, {
         credentials: 'include',
         headers: getHeaders(),
@@ -66,21 +62,16 @@ export const uploadDocument: (userId: string, subject: string, hidden: boolean, 
     file: File
 ) => {
     const formData = new FormData();
-    console.log('userId', userId);
 
-    console.log('file', file);
 
     formData.append('upload', file, file.name);
     formData.append('subject', subject);
     formData.append('hidden', String(hidden));
 
-    console.log('formData:', formData);
     // eslint-disable-next-line no-restricted-syntax
     for (const key of formData.entries()) {
-        console.log(`${key[0]}, ${key[1]}`);
     }
 
-    console.log(`${documentApi}/${userId}`);
 
     return fetch(`${documentApi}/${userId}`, {
         method: 'POST',
@@ -92,7 +83,6 @@ export const uploadDocument: (userId: string, subject: string, hidden: boolean, 
 };
 
 export const downloadDocument: (documentId: string) => Promise<string> = (documentId: string) => {
-    console.log(`${documentApi}/download/${documentId}`);
 
     return fetch(`${documentApi}/download/${documentId}`, {
         credentials: 'include',
@@ -125,7 +115,6 @@ export const getUserDocsBySub: (userId: string, subject: string, connectedUserId
     subject: string,
     connectedUserId: string
 ) => {
-    console.log(`${documentApi}/?${new URLSearchParams({ userId, subject })}`);
     if (userId !== connectedUserId) {
         return fetch(`${documentApi}/?${new URLSearchParams({ userId, subject })}`, {
             credentials: 'include',
@@ -134,7 +123,6 @@ export const getUserDocsBySub: (userId: string, subject: string, connectedUserId
             .then(handleErrors)
             .then(json);
     }
-    console.log(`${documentApi}/myProfile/?${new URLSearchParams({ userId, subject })}`);
 
     return fetch(`${documentApi}/myProfile/?${new URLSearchParams({ userId, subject })}`, {
         credentials: 'include',
@@ -148,7 +136,6 @@ export const updateDocument: (documentId: string, documentData: Partial<IDocumen
     documentId: string,
     documentData: Partial<IDocument>
 ) => {
-    console.log(`${documentApi}/${documentId}`);
 
     return fetch(`${documentApi}/${documentId}`, {
         method: 'PUT',
@@ -161,7 +148,6 @@ export const updateDocument: (documentId: string, documentData: Partial<IDocumen
 };
 
 export const deleteDocument: (documentId: string) => Promise<IDocument[]> = (documentId: string) => {
-    console.log(`${documentApi}/${documentId}`);
 
     return fetch(`${documentApi}/${documentId}`, {
         method: 'DELETE',
@@ -173,7 +159,6 @@ export const deleteDocument: (documentId: string) => Promise<IDocument[]> = (doc
 };
 
 export const createNote: (noteData: INote) => Promise<INote> = (noteData: INote) => {
-    console.log(`${noteApi}/${noteData.userId}`);
 
     return fetch(`${noteApi}/${noteData.userId}`, {
         method: 'POST',
@@ -189,7 +174,6 @@ export const getAllUserNotes: (userId: string, connectedUserId: string) => Promi
     userId: string,
     connectedUserId: string
 ) => {
-    console.log(`${noteApi}/?${new URLSearchParams({ userId })}`);
     if (userId !== connectedUserId) {
         return fetch(`${noteApi}/?${new URLSearchParams({ userId })}`, {
             credentials: 'include',
@@ -207,7 +191,6 @@ export const getAllUserNotes: (userId: string, connectedUserId: string) => Promi
 };
 
 export const deleteNote: (noteId: string) => Promise<INote[]> = (noteId: string) => {
-    console.log(`${noteApi}/${noteId}`);
 
     return fetch(`${noteApi}/${noteId}`, {
         method: 'DELETE',
@@ -219,7 +202,6 @@ export const deleteNote: (noteId: string) => Promise<INote[]> = (noteId: string)
 };
 
 export const updateNote: (noteData: Partial<INote>) => Promise<INote> = (noteData: Partial<INote>) => {
-    console.log(`${noteApi}/${noteData._id}`);
 
     return fetch(`${noteApi}/${noteData._id}`, {
         method: 'PUT',
@@ -232,7 +214,6 @@ export const updateNote: (noteData: Partial<INote>) => Promise<INote> = (noteDat
 };
 
 export const createBranch: (branchName: string) => Promise<IUser[]> = (branchName: string) => {
-    console.log(`${userApi}/upsertBranch/${branchName}`);
 
     return fetch(`${userApi}/upsertBranch/${branchName}`, {
         method: 'POST',

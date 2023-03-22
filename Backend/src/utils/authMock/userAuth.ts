@@ -1,7 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
 
-// TODO: Remember to delete added propery inside Reequest -> RequestParamsHandler -> propery name - user:IUser
-
 export function userAuth(req: Request, res: Response, next: NextFunction) {
     req.user = {
         username: 't_yarin_h',

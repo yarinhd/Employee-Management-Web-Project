@@ -3,8 +3,6 @@ import NoteModel from './note.model';
 
 export default class NoteRepository {
     static async getAllUserNotes(userId: string, connectedUserId: string): Promise<INote[] | null> {
-        console.log('not my self page');
-
         const notPublicUserNotes: INote[] | null = await NoteModel.find({
             userId,
             hidden: true,
@@ -49,8 +47,6 @@ export default class NoteRepository {
     }
 
     static async createNote(newNote: INote): Promise<INote | null> {
-        console.log(newNote);
-
         let addedNote: INote | null = await NoteModel.create(newNote);
         addedNote = await this.getNotePopulatedById(addedNote._id as string);
         return addedNote;
@@ -74,8 +70,6 @@ export default class NoteRepository {
     }
 
     static updateNoteById(noteId: string, noteData: Partial<INote>): Promise<INote | null> {
-        console.log(`noteData before repository: ${noteData}`);
-
         const updatedNote: Promise<INote | null> = NoteModel.findByIdAndUpdate(noteId, noteData, { new: true })
             .populate([
                 {

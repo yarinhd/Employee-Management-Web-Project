@@ -4,10 +4,8 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, makeStyles, Typography } from '@material-ui/core';
 import IModal from '../models/IModal';
-import { IDocument } from '../models/IDocument';
 
 type Props = {
     open: boolean;

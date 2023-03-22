@@ -1,5 +1,3 @@
-# Ask Almog: what does it mean -rf?
-# and why do i need here 2 Initialization and what are there meaning?
 # Stage 1 - build application
 FROM node:12 as build-stage
 WORKDIR /usr/src/app

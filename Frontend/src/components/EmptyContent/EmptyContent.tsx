@@ -3,9 +3,7 @@ import AutorenewIcon from '@mui/icons-material/Autorenew';
 import CloudSyncIcon from '@mui/icons-material/CloudSync';
 import { Box, Typography } from '@mui/material';
 import React, { useContext } from 'react';
-import IUser from '../../models/IUser';
 import { Context } from '../../store/Store';
-import FlipCardList from '../PersonalInfo/FlipCardList';
 
 const useStyle = makeStyles({
     iconWrapper: {
@@ -15,7 +13,6 @@ const useStyle = makeStyles({
         border: '1px solid',
         borderRadius: '10px',
         width: '100%',
-        // height: '100%',
         display: 'flex',
         alignContent: 'center',
         justifyContent: 'center',
@@ -26,7 +23,6 @@ const useStyle = makeStyles({
         top: '25vh',
         height: '20%',
         margin: '0px',
-        // border: '1px solid',
         borderRadius: '10px',
         width: '100%',
     },

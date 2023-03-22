@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { documentRouter } from './files/document.router';
+import { documentRouter } from './documents/document.router';
 import { groupRouter } from './groups/group.router';
 import { noteRouter } from './notes/note.router';
 import { userRouter } from './users/user.router';

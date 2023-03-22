@@ -58,7 +58,6 @@ export class DuplicationUser extends UserError {
     }
 }
 
-// Entered wrong subject for document document (need to chose an option from the DocumentSubject enum)
 export class WrongInputSubjectError extends UserError {
     constructor(message: string) {
         super(message || 'Subject is not exist - choose option from the box', 404);

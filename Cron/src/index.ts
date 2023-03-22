@@ -25,7 +25,6 @@ export const fetchBranches: () => Promise<any> = () => {
 export const fetchUpdateBranches: (branchName: string) => Promise<any> = (
   branchName: string
 ) => {
-  console.log(`http://localhost:5000/api/user/cronUpsertBranch/${branchName}`);
 
   return fetch(
     `http://localhost:5000/api/user/cronUpsertBranch/${branchName}`,
@@ -44,16 +43,12 @@ export const fetchUpdateBranches: (branchName: string) => Promise<any> = (
 const job = new cron.CronJob(
   "00 00 00 * * *",
   async function () {
-    console.log("starting corn action");
-    console.log("fetching branch names");
 
     const branchNames: string[] = await fetchBranches();
-    console.log("branch Names:", branchNames);
 
     const branchUpdated = await Promise.all(
       branchNames.map((branchName) => fetchUpdateBranches(branchName))
     );
-    console.log("branch Users:", branchUpdated);
   },
   null,
   true,

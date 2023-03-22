@@ -16,7 +16,6 @@ export default function useWrapFetch<T>(
             return fetch(...args)
                 .then(callback)
                 .catch((status: string) => {
-                    console.log('usewrapfetch - hi in error');
 
                     dispatch({ type: 'SET_ERROR', payload: status });
                 })

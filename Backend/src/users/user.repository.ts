@@ -4,20 +4,10 @@ import { IUser } from './user.interface';
 import UserModel from './user.model';
 
 export default class UserRepository {
-    // static updateBranch(branchName: string) {
-    //     const updatedBranch = updateBranch(branchName);
-    //     return updatedBranch;
-    // }
-
     static getAllGroupHierarchyUsers(branchName: string) {
         const branchUsers = getAllGroupHierarchyUsers(branchName);
         return branchUsers;
     }
-
-    // static upsertBranch(branchName: string) {
-    //     const upsertedBranch = upsertBranch(branchName);
-    //     return upsertedBranch;
-    // }
 
     static upsertUserByUsername(username: string, userData: Partial<IUser>) {
         const upsertedUser: Promise<IUser | null> = UserModel.findOneAndUpdate({ username }, userData, {
@@ -46,15 +36,9 @@ export default class UserRepository {
 
     static async updateManyByUsersId(usersId: string[], userData: Partial<IUser>) {
         const updatedUsers = await UserModel.updateMany({}, userData).exec();
-        console.log(updatedUsers);
 
         return updatedUsers;
     }
-
-    // static createUser(newUser: IUser): Promise<IUser> {
-    //     const addedUser: Promise<IUser> = UserModel.create(newUser);
-    //     return addedUser;
-    // }
 
     static updateUserByUserId(userId: string, userData: Partial<IUser>): Promise<IUser | null> {
         const updatedUser: Promise<IUser | null> = UserModel.findOneAndUpdate({ _id: userId }, userData, {

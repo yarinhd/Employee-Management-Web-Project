@@ -12,7 +12,6 @@ export default interface IUser {
     isAdmin: boolean;
     isBranchManager: boolean;
     avatar: string;
-    // TODO:add avatar feature!
     createdAt?: string;
     updatedAt?: string;
 }

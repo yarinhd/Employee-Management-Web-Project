@@ -15,9 +15,7 @@ export default class DocumentRepository {
     }
 
     static async getAllUserDocsBySub(userId: string, subject: DocumentSubject, connectedUserId: string) {
-        console.log('not my self page', userId, connectedUserId);
         const groupManagers = await filterRelevantUsers(userId, connectedUserId);
-        console.log('2222222222222222222222', groupManagers);
 
         const notPublicUserDoucments: IDocument[] | null = await DocumentModel.find({
             userId,
@@ -45,14 +43,12 @@ export default class DocumentRepository {
                 },
             ])
             .exec();
-        // TODO: pull too the public docs
 
         if (!publicUserDoucments || !notPublicUserDoucments) return null;
         return notPublicUserDoucments.concat(publicUserDoucments);
     }
 
     static getAllSelfDocsBySub(userId: string, subject: DocumentSubject) {
-        console.log(' my self page');
 
         const userDoucments: Promise<IDocument[] | null> = DocumentModel.find({
             userId,

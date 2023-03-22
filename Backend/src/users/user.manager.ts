@@ -10,14 +10,6 @@ import { users } from '../utils/people-api-mock/people-api';
 import { classifyUsersToGroups } from '../utils/utils';
 
 export default class UserManager {
-    // static async updateBranch(branchName: string) {
-    //     const updatedBranch = await UserRepository.updateBranch(branchName);
-    //     if (!updatedBranch) {
-    //         throw new BranchUpdateError('Faild to update Branch');
-    //     }
-    //     return updatedBranch;
-    // }
-
     /**
      * @param {string} branchName branch name
      * @return {Object} of the classified teams and users.
@@ -46,7 +38,6 @@ export default class UserManager {
             (user) => user.madorManager === user.username
         );
         if (!madorManagers) {
-            // TODO: change to return cause it is not really Error
             return { msg: 'branch have been created. NOTE: there is no madors at the created branch.' };
         }
         const createdMadorManagers: IUser[] = await Promise.all(
@@ -79,7 +70,6 @@ export default class UserManager {
         );
         const teamManager: IPeopleUser[] | undefined = branchUsers.filter((user) => user.teamManager === user.username);
         if (!teamManager) {
-            // TODO: change to return cause it is not really Error
             return { msg: 'branch have been created. NOTE: there is no teams at the created branch.' };
         }
         const createdTeamManagers: IUser[] = await Promise.all(
@@ -165,11 +155,6 @@ export default class UserManager {
         }
         const groupHierarchyUsers: IUser[] = await this.getAllGroupHierarchyUsers(loggedUser.inGroup);
         return groupHierarchyUsers;
-
-        // if (!foundUser) {
-        //     throw new UserNotFoundError('User not found');
-        // }
-        // return foundUser;
     }
 
     static async getAllGroupHierarchyUsers(branchName: string) {
@@ -205,10 +190,10 @@ export default class UserManager {
         return foundUsers;
     }
 
-    // updating array of users in the same fields
-    // for example updating all group users inGroup field
     /**
      * @param {string[]} usersId users Id array as PK
+     *  updating array of users in the same fields
+     *  for example updating all group users inGroup field
      * @return {IUser} updated users with the same field/s content
      * @example: updating all group users with inGroup field
      */
@@ -226,7 +211,6 @@ export default class UserManager {
      * @example: if user already created user will be updated with the new fields content.
      */
     static async upsertUserPersonalAndGroupInfo(user: IPeopleUser, groupName: string, madorName: string | null) {
-        console.log(user);
         const isBranchManager = user.branchManager === user.username;
 
         const { username, fullName, rank, job, serviceEndDate, gender, dateOfBirth } = user;
@@ -277,7 +261,6 @@ export default class UserManager {
         if (isBranchManager) {
             await GroupManager.upsertGroupFromPeopleApi(upsertedUser._id as string, user.branch, null);
         }
-        console.log(upsertedUser);
 
         return upsertedUser;
     }
@@ -316,7 +299,6 @@ export default class UserManager {
         if (!deletedUsers) {
             throw new UserNotFoundError("User not found - can't delete user");
         }
-        console.log('deleted users:', deletedUsers);
 
         return deletedUsers;
     }

@@ -22,7 +22,6 @@ documentRouter.get(
     Wrapper.wrapAsync(DocumentController.getAllUserDocsBySub)
 );
 
-// TODO:change route name and general checks again
 // get all Documents of user by subject and username
 documentRouter.get(
     '/myProfile/',
@@ -32,7 +31,6 @@ documentRouter.get(
 );
 
 // get document by documentId
-
 documentRouter.get(
     '/:documentId',
     AuthMiddleware,
@@ -49,7 +47,6 @@ documentRouter.get(
 );
 
 // create Document
-// TODO:UserAuth not working with formidable
 documentRouter.post(
     '/:userId',
     AuthMiddleware,
@@ -58,7 +55,6 @@ documentRouter.post(
 );
 
 // update Document by documentId
-// TODO: cover youself for updating part of the fields - do checks
 documentRouter.put(
     '/:documentId',
     AuthMiddleware,

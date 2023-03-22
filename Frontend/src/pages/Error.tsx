@@ -35,9 +35,7 @@ const ErrorComp: React.FC = () => {
             progress: undefined,
         });
 
-    // useEffect(() => {
-    //     notify();
-    // });
+
 
     const classes = useStyles();
 
@@ -46,4 +44,3 @@ const ErrorComp: React.FC = () => {
 
 export default ErrorComp;
 
-/* <ToastContainer rtl style={{ width: 'max-content' }} /> */

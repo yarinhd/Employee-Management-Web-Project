@@ -2,15 +2,10 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 import Autocomplete from '@mui/material/Autocomplete';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import { Avatar, Grid, makeStyles, Paper, TextField } from '@material-ui/core';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Box } from '@mui/material';
 import IUser from '../../models/IUser';
 import { Context } from '../../store/Store';
@@ -27,9 +22,6 @@ const styles = {
 const useStyles = makeStyles(() => ({
     topLayout: {
         background: 'linear-gradient(225deg, #5680E9 30%, #84CEEB 80%, #C1C8E4 100% )',
-        // position: 'sticky',
-        // alignContent: 'space-between',
-        // justifyContent: 'space-between',
     },
     rightSide: {
         display: 'flex',
@@ -61,7 +53,6 @@ const HeaderLayout: React.FC<React.HTMLAttributes<any>> = () => {
     React.useEffect(() => {
         if (state.user !== null) {
             getMyPakoodimWrapped(state.user?.inGroup)((pakoodim) => {
-                console.log(pakoodim);
                 dispatch({ type: 'SET_PAKOODIM', payload: pakoodim });
             });
             dispatch({ type: 'SET_CHOSEN_USER', payload: state.user });
@@ -70,7 +61,6 @@ const HeaderLayout: React.FC<React.HTMLAttributes<any>> = () => {
 
     const handleAutoCompClick = (event: React.SyntheticEvent<Element, Event>, value: IUser | null): void => {
         const userVal: IUser = value || state.user!;
-        // TODO: back over here!!!!! change it to the context state pakoodim
         const filteredUser: IUser | undefined = state.pakoodim.find((user) => user._id === userVal._id);
         if (!filteredUser) {
             dispatch({ type: 'SET_ERROR' });
@@ -85,9 +75,7 @@ const HeaderLayout: React.FC<React.HTMLAttributes<any>> = () => {
     return (
         <AppBar className={classes.topLayout}>
             <Toolbar>
-                {/* <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-                        <MenuIcon />
-                    </IconButton> */}
+
                 <Grid container>
                     <Grid item xs={3} className={classes.rightSide}>
                         <Typography className={classes.rightSide} variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -100,8 +88,6 @@ const HeaderLayout: React.FC<React.HTMLAttributes<any>> = () => {
                     </Grid>
 
                     <Grid item xs={6} className={classes.center}>
-                        {/* TODO: fix the problem of the textbox - when deleting the default name it not let user chose! */}
-                        {/* TODO: there is searching withde bouncing - look for it and implement if it critical fo UX */}
                         {state.user && (
                             <Autocomplete
                                 value={state.chosenUser || state.user}
@@ -131,7 +117,6 @@ const HeaderLayout: React.FC<React.HTMLAttributes<any>> = () => {
                                         <img
                                             loading="lazy"
                                             width="20"
-                                            // TODO: chamge it to avatar url!
                                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8xlBwhEawy9A19aM4M15TPYs5rM5xGEHmBA&usqp=CAU"
                                             alt=""
                                         />

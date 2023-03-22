@@ -2,15 +2,7 @@ import { toast } from 'react-toastify';
 import './toastStyle.css';
 
 const classifyToastMsg = (type: string, content: string) => {
-    // const toastAttrVal = {
-    //     position: 'top-center',
-    //     autoClose: 6000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    // };
+
     switch (type) {
         case 'error':
             return toast.error(content, {

@@ -5,7 +5,6 @@ import NoteManager from './note.manager';
 
 export default class NoteController {
     static async getNotePopulatedById(req: Request, res: Response) {
-        // const userAuth: IUser = req.user! as IUser;
         const { noteId } = req.params;
         const noteFound = await NoteManager.getNotePopulatedById(noteId);
         res.status(200).json(noteFound);
@@ -34,10 +33,8 @@ export default class NoteController {
     static async updateNoteById(req: Request, res: Response) {
         const { noteId } = req.params;
         const noteData = req.body as Partial<INote>;
-        console.log('noteData update:', noteData);
 
         const updatedNote = await NoteManager.updateNoteById(noteId, noteData);
-        console.log(updatedNote);
 
         res.status(200).json(updatedNote);
     }

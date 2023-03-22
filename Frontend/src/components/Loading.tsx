@@ -3,7 +3,6 @@ import React, { useContext } from 'react';
 import { HashLoader } from 'react-spinners';
 import { Context } from '../store/Store';
 
-// component for registering user at first login to the system
 
 const useStyles = makeStyles(() => ({
     loader: {

@@ -1,15 +1,9 @@
 import React, { useContext } from 'react';
 import { Box, Card, CardActions, CardContent, CardHeader, Grid, Icon, makeStyles } from '@material-ui/core';
-import { FileIcon, defaultStyles } from 'react-file-icon';
 
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import clsx from 'clsx';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-// import FileUploadDefaultImage from './FileUploadDefaultImage.png';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import FlipCardList from './FlipCardList';
-import config from '../../config';
 import { Context } from '../../store/Store';
 import IUser from '../../models/IUser';
 

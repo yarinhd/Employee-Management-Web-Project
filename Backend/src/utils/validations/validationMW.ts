@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { config } from '../../config';
-import { IDocument } from '../../files/document.interface';
-import DocumentManager from '../../files/document.manager';
+import { IDocument } from '../../documents/document.interface';
+import DocumentManager from '../../documents/document.manager';
 import INote from '../../notes/note.interface';
 import NoteManager from '../../notes/note.manager';
 import { IUser } from '../../users/user.interface';
@@ -32,7 +32,6 @@ export class Validator {
 
     static async canCreateOrUpdateBranch(req: Request, res: Response, next: NextFunction) {
         const loggedUser: IUser = req.user! as IUser;
-        // TODO: can change the config to specific fields of branchManager only
         const { branchManager } = await users.getUser(loggedUser.username, config.peopleApi.UserAndGroupfields);
         if (branchManager !== loggedUser.username) {
             throw new UnAuthorizedError('user is Unauthorized - only branch manager can use this api!');
@@ -127,10 +126,3 @@ export class Validator {
         next();
     }
 }
-
-// TODO: ask almog why is that working like this? not async and when i throw the err it catch
-// Why it is working without Wrapper? not understand this
-// TODO: ask almog is that ok to use req.user like this? cause it is not a propery of req by origin
-
-// TODO: Ask almog how can it work with try catch? intrestiong cause the wrapAsync is Async
-// TODO: ask almog is that ok to use req.user like this? cause it is not a propery of req by origin

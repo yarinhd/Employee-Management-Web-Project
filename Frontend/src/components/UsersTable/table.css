@@ -7,9 +7,7 @@ table {
 
 table td,
 table th {
-    /* border: 1px solid #ddd; */
     padding: 8px;
-    /* white-space: nowrap; */
     overflow: hidden;
 
 
@@ -39,7 +37,6 @@ table th,  tfoot td {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    /* background-color: #63e6b6; */
     color: rgb(0, 0, 0);
 }
 
@@ -102,7 +99,6 @@ font-family:-apple-system,
 
 .cat label span {
     text-align: center;
-    /* padding: 3px 0; */
     display: block;
 }
 
@@ -112,23 +108,19 @@ font-family:-apple-system,
     color: #fff !important;
 }
 
-/* selects all of the text within the input element and changes the color of the text */
 .cat label input+span {
     color: #fff;
 
 }
 
 
-/* This will declare how a selected input will look giving generic properties */
 .cat input:checked+span {
 
     color: #ffffff;
     text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
 }
 
-/*
-This following statements selects each category individually that contains an input element that is a checkbox and is checked (or selected) and chabges the background color of the span element.
-*/
+
 
 .action input:checked+span {
     background: linear-gradient(215deg, #5680e9 40%,#84ceeb 75%,#c1c8e4  100%);

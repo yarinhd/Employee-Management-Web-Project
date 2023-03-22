@@ -20,12 +20,10 @@ import { Context } from '../../store/Store';
 import INote from '../../models/INote';
 
 import ActionModal from '../../UploadComp/ActionModal';
-import IForm from '../../models/INoteForm';
 import IUser from '../../models/IUser';
 import NoteFormDialog from './NoteFormDialog';
 import EmptyContentComp from '../EmptyContent/EmptyContent';
 import toastHandler from '../../Utils/toastHandler';
-// TODO: make generic theme!
 
 const sortNotesByDate = (NotesArray: INote[]) => {
     NotesArray.sort(function (a, b) {
@@ -57,9 +55,6 @@ const NotesTimeline: React.FC = () => {
     const [open, setOpen] = React.useState<boolean>(false);
     const [openForm, setOpenForm] = React.useState<boolean>(false);
     const [chosenNote, setChosenNote] = React.useState<INote | null>(null);
-    // const titleRef = React.useRef<HTMLInputElement>(null);
-    // const subtitleRef = React.useRef<HTMLInputElement>(null);
-    // const descriptionRef = React.useRef<HTMLInputElement>(null);
 
     const url =
         'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
@@ -69,7 +64,6 @@ const NotesTimeline: React.FC = () => {
     const [state, dispatch] = useContext(Context);
     const [userNotes, setUserNotes] = useState<INote[]>([]);
 
-    // const DUMMY_NOTES: INotesTimeline[] = timelineElementsMock;
     const getAllUserNotesWrapped = useWrapFetch(getAllUserNotes);
     useEffect(() => {
         getAllUserNotesWrapped(
@@ -90,7 +84,6 @@ const NotesTimeline: React.FC = () => {
     const handleDelete = () => {
         setOpen(false);
         setUserNotes((prevState) => prevState.filter((note) => note?._id !== chosenNote?._id));
-        deleteUserNoteWrapped(chosenNote?._id)((note) => console.log('deleted:', note));
         setChosenNote(null);
         toastHandler('success', 'ההערה נמחקה בהצלחה!');
     };
@@ -109,21 +102,16 @@ const NotesTimeline: React.FC = () => {
 
     const fetchCreateNewNote = (noteData: INote) => {
         createNoteWrapped(noteData)((createdNote) => {
-            console.log('created new Note:', createdNote);
             setUserNotes((prevState) => [createdNote].concat(prevState));
-            console.log('userNotes', ...userNotes);
         });
         setChosenNote(null);
         toastHandler('success', 'נוצרה הערה חדשה בהצלחה!');
     };
 
     const fetchUpdateNote = (noteData: Partial<INote>) => {
-        console.log(`NoteData is befor sending: ${noteData}`);
 
         updateUserNoteWrapped(noteData)((updatedNote) => {
-            console.log('updated new Note:', updatedNote);
-            // TODO: continue from here donw know what to do
-            // need to update fields and send it to backend
+
             setUserNotes((prevState) => [updatedNote].concat(prevState));
         });
         setChosenNote(null);
@@ -154,7 +142,6 @@ const NotesTimeline: React.FC = () => {
             />
 
             <Grid container>
-                {/* TODO: update and delete is available for avishay on dimael notes/docs fix authorization on backend and forntend */}
                 {!isMyPage && (
                     <Grid
                         item
@@ -194,7 +181,6 @@ const NotesTimeline: React.FC = () => {
                                             <img
                                                 className="vertical-timeline-element-icon"
                                                 alt="Remy Sharp"
-                                                // TODO: need to put the url inside each img!!
                                                 src={urls[Math.floor(Math.random() * urls.length)]}
                                             />
                                         }
@@ -215,7 +201,6 @@ const NotesTimeline: React.FC = () => {
                                                 <VisibilityOffIcon fontSize="inherit" />
                                                 <Typography
                                                     style={{
-                                                        // display: 'flex',
                                                         fontSize: '12px',
                                                     }}
                                                     variant="subtitle2"

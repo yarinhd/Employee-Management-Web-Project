@@ -11,7 +11,6 @@ export interface IUser {
     madorGroup: string | null;
     isAdmin: boolean;
     isBranchManager: boolean;
-    // TODO:add avatar feature!
     createdAt?: string;
     updatedAt?: string;
 }

@@ -14,8 +14,6 @@ export default class NoteManager {
         if (!foundNotes) {
             throw new NoteNotFoundError('Note not found -  failed while finding notes');
         }
-        console.log(foundNotes);
-
         return foundNotes;
     }
 

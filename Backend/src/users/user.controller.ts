@@ -3,12 +3,6 @@ import UserManager from './user.manager';
 import { IUser } from './user.interface';
 
 export default class UserController {
-    // static async updateBranch(req: Request, res: Response) {
-    //     const { branchName } = req.params;
-    //     const updatedBranch = await UserManager.updateBranch(branchName);
-    //     res.json(updatedBranch);
-    // }
-
     static async upsertBranch(req: Request, res: Response) {
         const { branchName } = req.params;
         const upsertedBranch = await UserManager.upsertBranch(branchName);
@@ -22,11 +16,8 @@ export default class UserController {
     }
 
     static async getUserByUserId(req: Request, res: Response) {
-        console.log('aaa');
-
         const { userId } = req.params;
         const searchResult = await UserManager.getUserByUserId(userId);
-        console.log(searchResult);
 
         res.status(200).json(searchResult);
     }
@@ -38,8 +29,6 @@ export default class UserController {
     static async getMyPakoodim(req: Request, res: Response) {
         const loggedUser = req.user! as IUser;
         const pakoodim: IUser[] = await UserManager.getMyPakoodimByUserId(loggedUser);
-        console.log(pakoodim);
-
         res.status(200).json(pakoodim);
     }
 

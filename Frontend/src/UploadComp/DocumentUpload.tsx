@@ -66,9 +66,7 @@ const useStyle = makeStyles({
         '&:hover': {
             background: 'linear-gradient(0deg, #5AB9EA 0%, #84CEEB 50%, #5AB9EA 100%)',
             boxShadow: 'rgba(14, 30, 37, 0.12) 0px 2px 8px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px',
-            // color: '#ffffff',
         },
-        // background: 'linear-gradient(to right, #08AEEA, #2AF598)',
         '&:disabled': {
             cursor: 'not-allowed',
             opacity: '0.6',
@@ -214,7 +212,6 @@ const DocumentUpload: React.FC<DocUploadProps> = ({
         if (fileToUpload !== null) {
             fileUploadHandler(event, fileToUpload, hiddenFile);
         }
-        console.log('ssssssssssssssssssssssssssssssssssssssssssssssss');
 
         setFileToUpload(null);
     };

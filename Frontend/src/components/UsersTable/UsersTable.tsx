@@ -55,7 +55,6 @@ const UsersTable = () => {
         useSortBy,
         usePagination
     );
-    // TODO: fix the default page size
     const { pageIndex, pageSize } = state;
 
     const sortColumn = (columnToSort: HeaderGroup<IUser>) => {

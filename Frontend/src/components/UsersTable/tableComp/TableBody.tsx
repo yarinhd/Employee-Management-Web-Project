@@ -34,7 +34,6 @@ const TableBody: React.FC<Props> = ({ getTableBodyProps, page, prepareRow }) => 
 
                                 navigate('/notes');
                             });
-                            //  TODO: add request for seeing the users thath clicked by id
                         }}
                     >
                         {row.cells.map((cell) => {

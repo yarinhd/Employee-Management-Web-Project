@@ -18,8 +18,6 @@ export default class DocumentController {
     }
 
     static async getAllUserDocsBySub(req: Request, res: Response) {
-        console.log(req.query.userId);
-        console.log(req.query.subject);
 
         const loggedUser = String((req.user! as IUser)._id as string);
         const { userId } = req.query;
@@ -29,14 +27,11 @@ export default class DocumentController {
             subject as DocumentSubject,
             loggedUser
         );
-        console.log(userDocuments);
 
         res.json(userDocuments);
     }
 
     static async getAllSelfDocsBySub(req: Request, res: Response) {
-        console.log(req.query.userId);
-        console.log(req.query.subject);
 
         const { userId } = req.query;
         const subject = decodeURI(req.query.subject as string);
@@ -44,17 +39,14 @@ export default class DocumentController {
             userId as string,
             subject as DocumentSubject
         );
-        console.log(userDocuments);
 
         res.json(userDocuments);
     }
 
     static async getAllDocumentsByUserId(req: Request, res: Response) {
-        console.log(req.query.userId);
 
         const { userId } = req.query;
         const userDocuments: IDocument[] = await DocumentManager.getAllDocumentsByUserId(userId as string);
-        console.log(userDocuments);
 
         res.json(userDocuments);
     }
@@ -64,7 +56,6 @@ export default class DocumentController {
         const createdBy = req.user! as IUser;
         const form = formidable({ multiples: false });
 
-        // TODO: ask almog how i add catch to the promise!
         const formfields: IFormidableObj = await new Promise((resolve, reject) => {
             form.parse(req, (err, fields, files) => {
                 if (err) {
@@ -76,7 +67,6 @@ export default class DocumentController {
                 resolve({ fields, files });
             });
         });
-        // TODO: ask almog if that is ok
         if (formfields instanceof Error) {
             throw formfields;
         }

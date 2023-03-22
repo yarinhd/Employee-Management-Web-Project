@@ -5,7 +5,7 @@ import './flipCard.css';
 import i18next from 'i18next';
 
 i18next.init({
-    lng: 'en', // if you're using a language detector, do not define the lng option
+    lng: 'en',
     debug: true,
     resources: {
         en: {
@@ -74,17 +74,14 @@ const useStyles = makeStyles(() => ({
     cardText: {
         fontSize: '20px',
     },
-    // flip_card_front: { background: 'linear-gradient(#37D5D6, #36096D)', color: 'white' },
-    // flip_card_back: { background: 'linear-gradient(#91A6FF, #FFFFFF)', color: 'black', transform: 'rotateY(180deg)' },
+
 }));
 
 const FlipCardItem: React.FC<{ boxData: any } & React.HTMLAttributes<any>> = (props) => {
     const { boxData } = props;
-    // console.log(boxData);
     const classes = useStyles();
     const title = Object.keys(boxData)[0];
     const content = boxData[title];
-    // console.log(boxData[title]);
     return (
         <li className="flip-card">
             <div className="flip-card-inner">

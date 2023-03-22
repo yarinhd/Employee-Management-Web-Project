@@ -32,8 +32,7 @@ import { Context } from '../../../store/Store';
 
 const useStyles = makeStyles(() => ({
     sidebar: {
-        // width: '20vw',
-        // minWidth: '33vw',
+
         display: 'flex',
         flexDirection: 'column',
         flexWrap: 'wrap',
@@ -43,11 +42,8 @@ const useStyles = makeStyles(() => ({
         margin: '0px 10px 0 auto',
         borderRadius: '20px',
         background: 'linear-gradient(205deg, #5680e9e1 0%, #84ceeb 100%)',
-        // boxShadow: '0px 0px 10px hsl(210 14% 90%)',
         boxShadow: 'rgba(0, 0, 0, 0.2) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px',
 
-        // alignContent: 'space-between',
-        // justifyContent: 'space-between',
     },
     sidebarStyle: {
         background: 'linear-gradient(205deg, #5680e9e1 0%, #84ceeb 100%)',

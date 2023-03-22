@@ -6,7 +6,7 @@ import Wrapper from '../wrapper';
 import GroupController from './group.controller';
 
 export const groupRouter = Router();
-// TODO: do it from user in group fields easy
+
 // get Group  by group name.
 groupRouter.get(
     '/:groupName',
@@ -19,7 +19,6 @@ groupRouter.get(
 groupRouter.get(
     '/',
     AuthMiddleware,
-    // TODO: see how you fix the authorization (in generally)
     Wrapper.wrapAsync(Validator.canGetParentGroup),
     Wrapper.wrapAsync(GroupController.getAllGroupByFilter)
 );

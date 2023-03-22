@@ -14,7 +14,6 @@ const initialState: GlobalState = {
 
 const StoreProvider: React.FC = ({ children }) => {
     const [state, dispatch] = useReducer(Reducer, initialState);
-    // Ask Almog: why you use useMemo here? so it won't initialize every rendering?
     return <Context.Provider value={useMemo(() => [state, dispatch], [state, dispatch])}>{children}</Context.Provider>; // update the Context with a value.
 };
 

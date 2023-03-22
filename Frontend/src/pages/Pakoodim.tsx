@@ -8,7 +8,6 @@ import UsersTable from '../components/UsersTable/UsersTable';
 const useStyles = makeStyles(() => ({
     box: {
         display: 'flex',
-        // padding: '0 96px',
         flexDirection: 'column',
         alignItems: 'center',
     },
@@ -25,8 +24,7 @@ const Pakoodim: React.FC = () => {
     return (
         <Box className="box">
             <UsersTable />
-            {/* <FileUpload {...fileUploadProp} /> */}
-            {/* <UserSections /> */}
+
         </Box>
     );
 };

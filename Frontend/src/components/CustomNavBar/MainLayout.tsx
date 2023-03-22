@@ -56,7 +56,6 @@ const MainLayout: React.FC = ({ children }) => {
                     <HeaderLayout style={{ height: '100%' }} />
                 </Grid>
                 <Grid item xs={2.3} className={classes.box33} style={{ marginTop: '1%' }}>
-                    {/* <TopSideBarLayout /> */}
                     <Sidebar />
                 </Grid>
                 <Grid item xs={9.7}>

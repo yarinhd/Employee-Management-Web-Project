@@ -2,7 +2,6 @@
 import { Fade, makeStyles, Theme } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import PROMO from './promo_classic.gif';
-import MarioLogo from './mainlogo.png';
 
 interface promoProps {
     children: React.ReactNode;
@@ -26,7 +25,6 @@ const Promo: React.FC<promoProps> = (props) => {
     const { children, promoTimeout, childrenTimeout, delay } = props;
     const [signal, setSignal] = useState(true);
     const [childrenSignal, setChildrenSignal] = useState(false);
-    const showSystemLogo = false;
 
     useEffect(() => {
         setChildrenSignal(true);
@@ -47,7 +45,6 @@ const Promo: React.FC<promoProps> = (props) => {
             >
                 <div>
                     <img src={PROMO} alt="" className={classes.image} />
-                    {showSystemLogo && <img src={MarioLogo} alt="" className={classes.logo} />}
                 </div>
             </Fade>
             <Fade in={childrenSignal} timeout={childrenTimeout}>

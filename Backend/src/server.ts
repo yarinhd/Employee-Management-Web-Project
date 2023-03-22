@@ -18,7 +18,6 @@ export class Server {
     }
 
     constructor() {
-        console.log(`In Server constructor --> V`);
         this.app = express();
         this.app.use(cors({ credentials: true, origin: config.endpoints.clientUrl }));
         this.app.use(cookieParser());
@@ -26,13 +25,10 @@ export class Server {
         this.app.use(express.json());
         passport.use(Strategy);
         this.app.use(passport.initialize());
-        // TODO: adapt it to the work place libarary
-        // this.app.use(Auth.kerberosAuth);
         users.createUser();
         this.app.use(appRouter);
         this.app.use(userErrorHandler);
         this.app.listen(config.serverPort, () => {
-            console.log(`Server started on port: ${config.serverPort} --> V `);
         });
     }
 }

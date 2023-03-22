@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-// import { IUser } from '../users/user.interface';
 import { WrongFilterInputError } from '../utils/errors/userError';
 import { IGroup, IGroupFilter } from './group.interface';
 import GroupManager from './group.manager';
@@ -30,7 +29,6 @@ export default class GroupController {
         const groupName = req.query.groupName as string;
         const action = req.query.action as string;
         const groupData = req.body as Partial<IGroup>;
-        // not sure -need to check
         const updatedGroup = await GroupManager.updateGroupByName(groupName, groupData, action);
         res.status(200).json(updatedGroup);
     }

@@ -59,7 +59,6 @@ const BranchManagerComp: React.FC = () => {
 
     const handleCreateBranch = (e: React.MouseEvent<HTMLButtonElement>) => {
         createBranchWrapped(state.user?.inGroup)((allBranchUsers: IUser[]) => {
-            console.log(allBranchUsers);
             dispatch({ type: 'SET_PAKOODIM', payload: allBranchUsers });
         });
         toastHandler('success', `אתחול/עדכון ענף ${state.user?.inGroup} בוצע בהצלחה!`);

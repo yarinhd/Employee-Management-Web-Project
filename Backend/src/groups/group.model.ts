@@ -6,8 +6,6 @@ const GroupSchema = new mongoose.Schema(
         name: {
             type: String,
             required: true,
-            // unique: true,
-            // index: true,
         },
         usersId: {
             type: [mongoose.Schema.Types.ObjectId],

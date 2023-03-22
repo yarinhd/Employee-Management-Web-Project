@@ -32,9 +32,7 @@ export default class GroupRepository {
     }
 
     static getGroupByName(name: string): Promise<IGroup | null> {
-        const foundGroup: Promise<IGroup | null> = GroupModel.findOne({ name })
-            // .populate({ path: 'usersId', model: 'User' })
-            .exec();
+        const foundGroup: Promise<IGroup | null> = GroupModel.findOne({ name }).exec();
         return foundGroup;
     }
 
@@ -76,7 +74,6 @@ export default class GroupRepository {
         return updatedGroup;
     }
 
-    // Needed to add $in inside pull understand from almog why (all the array shit)
     static delGroupUpdateByName(name: string, groupData: Partial<IGroup>): Promise<IGroup | null> {
         const updatedGroup: Promise<IGroup | null> = GroupModel.findOneAndUpdate(
             { name },

@@ -12,7 +12,6 @@ import { FileUploadProps, DocumentsComp } from '../UploadComp/DocumentsComp';
 const useStyles = makeStyles(() => ({
     box: {
         display: 'flex',
-        // padding: '0 96px',
         flexDirection: 'column',
         alignItems: 'center',
     },
@@ -33,20 +32,9 @@ const PeyAlef: React.FC = () => {
     };
     return (
         <Box className="box">
-            {/* <FileUpload {...fileUploadProp} imageButton/> */}
-            {/* <FileUpload {...fileUploadProp} /> */}
             <DocumentsComp {...fileUploadProp} />
         </Box>
     );
-    // const classes = useStyles();
-    // return (
-    //     <label htmlFor="raised-button-file">
-    //         <input accept="image/*" style={{ display: 'none' }} id="raised-button-file" multiple type="file" />
-    //         <Button variant="contained" component="span">
-    //             Upload
-    //         </Button>
-    //     </label>
-    // );
 };
 
 export default PeyAlef;

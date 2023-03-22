@@ -3,7 +3,6 @@ import { Avatar } from '@material-ui/core';
 import { CellProps, Column } from 'react-table';
 import IUser from '../../../models/IUser';
 
-// TODO: ask almog if that is ok!
 const avatarJSX = (tableProps: React.PropsWithChildren<CellProps<IUser, string>>): React.ReactNode => (
     <Avatar
         alt="Remy Sharp"

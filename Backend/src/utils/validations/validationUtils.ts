@@ -47,34 +47,6 @@ export async function getSuperiorGroupManagers(groupname: string): Promise<strin
 }
 
 /**
- * @param {string} groupname http request
- * @return {Promise<string[]>} array with admin users Id
- * the function works recursively and making an array of users admins based on group name hierarchy
- * @example if goupname is team so the array will include [teamManagerId, madorManagerId, branchManagerId]
- */
-// export async function getSubGroupManagers(groupname: string): Promise<string[]> {
-//     const populatedGroup: IGroup = await GroupManager.getGroupByName(groupname);
-//     const admins: string[] = [];
-//     // TODO: go for son groups ingroup with this group name
-//     admins.push(String(populatedGroup.manager as string));
-//     const childrenGroups: IGroup[] = await GroupManager.getAllGroupByFilter({ parentName: groupname });
-//     if (!childrenGroups.length) {
-//         return admins;
-//     }
-//     // const fatherGroup: IGroup | null = await GroupManager.getGroupByName(populatedGroup.parentName);
-//     // if (!fatherGroup) {
-//     //     throw new GroupNotFoundError('Group not found - failed while creating admins list');
-//     // }
-//     const groupManagers: string[][] = await Promise.all(
-//         childrenGroups.map((group) => {
-//             const subGroupManagers: Promise<string[]> = getSubGroupManagers(group.name);
-//             return subGroupManagers;
-//         })
-//     );
-//     return admins.concat(groupManagers.flat());
-// }
-
-/**
  * @param {IUser} loggedUser connected user with valid token (populated token)
  * @param {string | null} userId user Id
  * @return {null} equivalet to true

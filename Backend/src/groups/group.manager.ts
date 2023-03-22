@@ -68,16 +68,11 @@ export default class GroupManager {
         return subGroups;
     }
 
-    // return all groups that match the filter: parentName/ groupName
     /**
-     * @param {IGroupFilter} filter group name/group parent as PK/FK
-     * @return {IGroup} for groupName - the specific group
-     *                  for paranetId - the sub groups (children group)
-     *                  users return populated!
+     * @return {string[]} freturn all groups that match the filter: parentName/ groupName
      */
     static async getAllExistBranches() {
         const existBranches: { name: string }[] | null = await GroupRepository.getAllExistBranches();
-        console.log(existBranches);
 
         if (!existBranches) {
             return [];
@@ -124,7 +119,6 @@ export default class GroupManager {
             name,
             usersId: [userId],
             parentName,
-            // TODO: think about convert that name to objID
             manager: userId,
         };
         const addedGroup = await GroupRepository.upsertGroupByName(name, group);
@@ -154,16 +148,6 @@ export default class GroupManager {
             return updatedGroup;
         }
         throw new WrongUserInputError('Group failed to update - Cannot update group due to wrong inputs!');
-
-        // if (action === config.action.Del) {
-        //     updatedGroup = await GroupRepository.delGroupUpdateByName(groupName, groupData);
-        //     if (!updatedGroup) {
-        //         throw new GroupNotFoundError('Group not found');
-        //     }
-        //     // TODO: maybe not needed cause initalize group fields in user creation
-        //     await UserManager.updateManyByUsersId(usersId, { inGroup: null } as Partial<IUser>);
-        //     return updatedGroup;
-        // }
     }
 
     /**
@@ -216,7 +200,6 @@ export default class GroupManager {
         if (!deletedGroup) {
             throw new GroupNotFoundError('Group not found - failed to delete group');
         }
-        console.log('deleted Groups:', deletedGroup);
 
         return deletedGroup;
     }
@@ -233,14 +216,10 @@ export default class GroupManager {
             if (groupSubChildren.length) {
                 await this.recursiveGroupDelete(groupChild);
             }
-            // TODO: remember you ingore this line for now cause of changes
-            // await UserManager.updateManyByUsername(groupChild.users as string[], { inGroup: null } as Partial<IUser>);
             await GroupRepository.deletedGroupByName(groupChild.name);
             // eslint-disable-next-line no-useless-return
             return;
         });
-        // TODO: remember you ingore this line for now cause of changes
-        // await UserManager.updateManyByUsername(populatedGroup.users as string[], { inGroup: null } as Partial<IUser>);
         return (await GroupRepository.deletedGroupByName(populatedGroup.name)) as IGroup;
     }
 }

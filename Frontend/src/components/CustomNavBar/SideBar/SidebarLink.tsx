@@ -8,7 +8,6 @@ type Props = {
     onNavigate: (route: string) => void;
     route: string;
     // eslint-disable-next-line react/require-default-props
-    // eslint-disable-next-line react/require-default-props
 };
 
 const useStyles = makeStyles(() => ({
@@ -45,7 +44,6 @@ const SidebarLink: React.FC<Props & React.HTMLAttributes<any>> = ({ children, te
         onNavigate(route);
     };
 
-    // const { text, Icon } = props;
     return (
         <Button
             disableRipple

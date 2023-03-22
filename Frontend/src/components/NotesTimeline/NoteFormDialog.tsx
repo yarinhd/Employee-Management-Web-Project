@@ -4,27 +4,19 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import DeleteIcon from '@mui/icons-material/Delete';
 import {
     Button,
-    createTheme,
-    Grid,
-    IconButton,
     makeStyles,
     TextField,
-    ThemeProvider,
     Typography,
 } from '@material-ui/core';
 
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
-import EditIcon from '@mui/icons-material/Edit';
 import { Context } from '../../store/Store';
-import { createNote } from '../../services/user';
 import IForm from '../../models/INoteForm';
 import INote from '../../models/INote';
-import useWrapFetch from '../../hooks/useWrapFetch';
 
 type Props = {
     openForm: boolean;
@@ -32,7 +24,6 @@ type Props = {
     fetchCreateNewNote: (noteData: INote) => void;
     fetchUpdateNote: (noteData: Partial<INote>) => void;
     editedNote: INote | null;
-    // handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 };
 
 const useStyle = makeStyles({
@@ -62,7 +53,6 @@ const NoteFormDialog: React.FC<Props> = ({
     const [form, setForm] = React.useState<IForm>({ title: '', subtitle: '', description: '', hidden: false });
     const formNotEmpty = form.title.length > 0 && form.subtitle.length > 0 && form.description.length > 0;
 
-    // TODO: fix the problem with the edit shit cause it should clean the form state from edit data after openning it!
     const handleCloseModal = () => {
         handleCloseForm();
         setForm({ title: '', subtitle: '', description: '', hidden: false });
@@ -76,14 +66,8 @@ const NoteFormDialog: React.FC<Props> = ({
                 hidden: editedNote.hidden,
             });
     }, [editedNote]);
-    console.log(`form is${JSON.stringify(form)}`);
 
-    // const handleHiddenFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    //     setHiddenFile(event.target.checked);
-    //     setForm((prevState) => {
-    //         return { ...prevState, hidden: event.target.checked };
-    //     });
-    // };
+
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -98,18 +82,15 @@ const NoteFormDialog: React.FC<Props> = ({
             };
             fetchUpdateNote(noteUpdateData);
         } else {
-            // setForm({ title: '', subtitle: '', description: '', hidden: false });
             const noteData: INote = {
                 title: form.title,
                 subtitle: form.subtitle,
                 hidden: form.hidden as boolean,
                 description: form.description,
                 userId: state.chosenUser?._id,
-                // TODO: note about that think
-                // createdAt: new Date().toISOString(),
+
                 createdBy: state.user?._id,
             };
-            console.log(`noteData befor sent to backend for creation: ${JSON.stringify(noteData)}`);
 
             fetchCreateNewNote(noteData);
         }
@@ -168,7 +149,6 @@ const NoteFormDialog: React.FC<Props> = ({
                             placeholder="אנא הכנס נושא"
                             style={{ background: '#ffff' }}
 
-                            // inputRef={titleRef}
                         />
                         <TextField
                             onChange={(e) => {
@@ -185,7 +165,6 @@ const NoteFormDialog: React.FC<Props> = ({
                             variant="outlined"
                             size="small"
                             placeholder="אנא הכנס מיקום/כותרת משנה"
-                            // inputRef={subtitleRef}
                         />
                         <TextField
                             onChange={(e) => {
@@ -202,12 +181,10 @@ const NoteFormDialog: React.FC<Props> = ({
                             defaultValue={editedNote?._id ? String(`${editedNote?.description}`) : String('')}
                             variant="outlined"
                             size="small"
-                            // inputRef={descriptionRef}
                         />
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions className={classes.root}>
-                    {/* <Button className={classes.root} onClick={() => handleCloseModal()}> */}
                     <Button className={classes.root} onClick={() => handleCloseModal()}>
                         <Typography variant="h6" component="span">
                             ביטול❌

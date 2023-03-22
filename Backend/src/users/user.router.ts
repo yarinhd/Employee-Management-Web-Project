@@ -15,16 +15,8 @@ userRouter.post(
 
 userRouter.post('/cronUpsertBranch/:branchName', Wrapper.wrapAsync(UserController.upsertBranch));
 
-// userRouter.put(
-//     '/updateBranch/:branchName',
-//     AuthMiddleware,
-//     Wrapper.wrapAsync(Validator.canCreateOrUpdateBranch),
-//     Wrapper.wrapAsync(UserController.updateBranch)
-// );
-
 userRouter.get('/myPakoodim', AuthMiddleware, Wrapper.wrapAsync(UserController.getMyPakoodim));
 // get user by userId.
-// userRouter.get('/:userId', AuthMiddleware, Wrapper.wrapAsync(UserController.getUserByUserId));
 userRouter.get('/:userId', AuthMiddleware, Wrapper.wrapAsync(UserController.getUserByUserId));
 
 // get myself user.
@@ -49,7 +41,6 @@ userRouter.put(
 );
 
 // delete user by username
-// TODO: add deletion from group and updating the group + documents and notes when user is deleted!
 userRouter.delete(
     '/:userId',
     AuthMiddleware,

@@ -27,9 +27,6 @@ export default class authController {
             throw new UserNotFoundError('User not found in People-API');
         }
         const user: IUser = await UserManager.upsertUserPersonalInfo(userName, peopleApiUser);
-        if (!user.inGroup) {
-            // TODO: check changes in whole groups! and update in accordance
-        }
         const tokenObject: ICookie = issueJWT(user);
         res.cookie(tokenObject.cookieName, tokenObject.token, {
             httpOnly: true,

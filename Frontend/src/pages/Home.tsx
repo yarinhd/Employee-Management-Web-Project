@@ -19,7 +19,6 @@ const useStyles = makeStyles(() => ({
     },
     box: {
         display: 'flex',
-        // padding: '0 96px',
         flexDirection: 'column',
         alignItems: 'center',
     },
@@ -38,7 +37,6 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-// const { user } = config.DUMMY_DATA;
 
 const Home: React.FC = () => {
     const classes = useStyles();
@@ -46,7 +44,6 @@ const Home: React.FC = () => {
         <Box className={classes.box}>
             <FlipCardComp />
         </Box>
-        // <FlipCardList cubeItems={user} />
     );
 };
 

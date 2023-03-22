@@ -16,15 +16,12 @@ export function classifyUsersToGroups(usersTeamAndId: IUser[]) {
     const teamsClassify: { [key: string]: string[] } = {};
     for (let i = 0; i < usersTeamAndId.length; i++) {
         if (!usersTeamAndId[i].inGroup || !usersTeamAndId[i]._id) {
-            console.log('error', usersTeamAndId[i].inGroup, usersTeamAndId[i]._id);
-            console.log(usersTeamAndId[i]);
 
             throw new LackOfUserInfoError('User is missing fields - group it belong or userId ');
         }
         if (!Object.keys(teamsClassify).includes(usersTeamAndId[i].inGroup as string)) {
             teamsClassify[`${usersTeamAndId[i].inGroup}`] = [];
             teamsClassify[`${usersTeamAndId[i].inGroup}`].push(usersTeamAndId[i]._id as string);
-            // TODO: ask almog if that is ok
             // eslint-disable-next-line no-continue
             continue;
         }
