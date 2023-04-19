@@ -9,3 +9,4 @@ This project serves as a comprehensive tool for organizing and maintaining emplo
 
 The information can be made visible or hidden from the employees, depending on the manager's preferences. This tool plays a crucial role when a new team leader joins a team, as it helps them understand and connect with each team member based on their work history, which is documented through notes and files.
 
+![Architecture Diagram](assets/PeopleManagingProject.png)
