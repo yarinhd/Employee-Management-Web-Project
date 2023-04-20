@@ -1,0 +1,54 @@
+services:
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - 'mongo-volume:/data/db'
+  minio:
+    container_name: minio
+    image: minio/minio
+    ports:
+      - '9000:9000'
+    environment:
+      MINIO_ROOT_USER: yarin
+      MINIO_ROOT_PASSWORD: yarayara
+    volumes:
+      - 'minio-volume:/data'
+    command: server /data
+  backend:
+    container_name: backend
+    image: backend
+    build:
+      context: ../Backend
+      dockerfile: Dockerfile
+    environment:
+      DB_SERVER: mongo
+      DB_NAME: cramim
+      DB_PORT: 27017
+      MINIO_ROOT_USER: yarin
+      MINIO_ROOT_PASSWORD: yarayara
+      MINIO_SERVER: minio
+      MINIO_BUCKET: documents
+      MINIO_PORT: 9000
+      PORT: 5000
+    ports:
+      - '5000:5000'
+    depends_on:
+      - mongo
+      - minio
+  nginx:
+    image: 'nginx:latest'
+    volumes:
+      - './nginx/nginx.conf:/etc/nginx/nginx.conf'
+    ports:
+      - '80:80'
+  client:
+    build: ../Frontend
+    expose: 
+      - 80
+    
+volumes:
+  mongo-volume: null
+  minio-volume: null

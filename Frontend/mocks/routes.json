@@ -1,0 +1,9 @@
+{
+    "/api/*": "/$1",
+    "/user/me": "/profile",
+    "/auth/login": "/profile",
+    "/user/search\\?:query": "/user?:query",
+    "/task/search\\?:query": "/task",
+    "/task/handletime\\?:query": "/taskTable",
+    "/task/location": "/location"
+}

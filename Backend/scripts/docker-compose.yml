@@ -1,0 +1,21 @@
+services:
+  jarin-mongo:
+    container_name: jarin-mongo2
+    image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - 'mongo-volume:/data/db'
+  cramim:
+    image: cramim
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    ports:
+      - '3001:3001'
+    depends_on:
+      - jarin-mongo2
+    environment:
+      DB_SERVER: jarin-mongo2
+volumes:
+  mongo-volume: null
