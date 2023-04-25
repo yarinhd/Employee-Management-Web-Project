@@ -11,7 +11,7 @@ The Employee Management Web Project is a comprehensive, user-friendly platform d
 * **File Management:** Upload and manage files relevant to employee performance and career growth, such as performance reviews, project documents, and training materials.
 * **Notes:** Record observations, feedback, and any other pertinent information on employee performance, facilitating communication between managers and their team members.
 * **Visibility Control:** Control the visibility of information, allowing employees access to selected data based on managerial preferences, maintaining privacy when needed.
-**Onboarding Support:** Facilitate the integration of new team leaders by providing access to comprehensive employee work history, ensuring a smooth transition and enhancing team cohesion.
+* **Onboarding Support:** Facilitate the integration of new team leaders by providing access to comprehensive employee work history, ensuring a smooth transition and enhancing team cohesion.
 
 ## Version
 
