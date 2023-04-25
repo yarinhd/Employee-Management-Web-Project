@@ -32,7 +32,7 @@ This is a prototype version of the project. Please note that the current impleme
 ### Installation:
 
 1. Clone the repository:
-   git clone https://github.com/yourusername/employee-management-web-project.git
+   git clone https://github.com/yarinhd/Employee-Management-Web-Project.git
 2. Navigate to the project directory and install the required dependencies:
    cd employee-management-web-project
    npm install
